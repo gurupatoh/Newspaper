@@ -5,7 +5,5 @@ from .forms import CustomerUserCreationForm
 
 class SignUpView(CreateView):
     form_class = CustomerUserCreationForm
-
-
-success_url = reverse_lazy('login')
-template_name = 'signup.html'
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
