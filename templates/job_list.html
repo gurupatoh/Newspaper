@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Jobs_Listings{% endblock title %}
+{% block content %}
+    {% for job in object_list %}
+    <div class="card">
+   <div class="card-header">
+     <span class="font-weight-bold">{{ job.title }}</span> &middot;
+       <span class="text-muted">by {{ job.author }} |
+           {{ job.date }}</span>
+</div>
+    <div class="card-body">
+{{ job.body }}
+</div>
+    <div class="card-footer text-center text-muted">
+<a href="#">Edit</a> | <a href="#">Delete</a>
+</div>
+    </div>
+<br />
+{% endfor %}
+{% endblock content %}
