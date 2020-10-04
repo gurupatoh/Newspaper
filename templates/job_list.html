@@ -12,7 +12,8 @@
 {{ job.body }}
 </div>
     <div class="card-footer text-center text-muted">
-<a href="#">Edit</a> | <a href="#">Delete</a>
+        <a href="{% url 'job_edit' job.pk %}">Edit</a> |
+        <a href="{% url 'job_delete' job.pk %}">Delete</a>
 </div>
     </div>
 <br />
