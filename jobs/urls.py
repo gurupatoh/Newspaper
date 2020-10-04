@@ -4,6 +4,7 @@ from .views import (
     JobUpdateView,
     JobDetailView,
     JobDeleteView,  # new
+    JobCreateView,
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
          JobDetailView.as_view(), name='job_detail'),  # new
     path('<int:pk>/delete/',
          JobDeleteView.as_view(), name='job_delete'),  # new
+    path('new/', JobCreateView.as_view(), name='job_new'),  # new
     path('', JobListView.as_view(), name='job_list'),
 ]
