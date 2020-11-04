@@ -1,12 +1,48 @@
 {% extends 'base.html' %}
+{% block title %}Jobs_Details{% endblock title %}
 {% block content %}
-    <div class="article-entry">
-<h2>{{ object.title }}</h2>
-<p>by {{ object.author }} | {{ object.date }}</p>
-<p>{{ object.body }}</p>
-</div>
-    <p><a href="{% url 'job_edit' job.pk %}">Edit</a> |
-<a href="{% url 'job_delete' job.pk %}">Delete</a></p>
-<p>Back to <a href="{% url 'job_list' %}">All Articles</a>.</p>
+    <nav class="navbar navbar-light bg-light">
 
-{%  endblock content %}
+</nav>
+    {% for job in object_list %}
+    <div class="card">
+   <div class="card-header">
+     <span class="font-weight-bold">Job Title:{{ job.title }}</span> &middot;
+      <div class="card-body">
+ client:{{ job.client }}
+</div>
+         <div class="card-body">
+ category:{{ job.category }}
+</div>
+            <div class="card-body">
+ location:{{ job.location }}
+</div>
+            <div class="card-body">
+ Date Added:{{ job.date }}
+</div>
+
+</div>
+    <div class="card-body">
+Description:{{ job.body }}
+</div>
+    </div>
+  <div class="card">
+           <div class="card-content">
+               <form action="" method="POST" class="form">
+                   {% csrf_token %}
+               <h5>Promote Bid</h5>
+               <label for="">
+                   Share Quantity
+               </label>
+               <input name="quantity" required id="quantity" type="number" min=1>
+               <label for="">
+                   Amount ($)
+               </label>
+               <input name="amount" required id="amount" type="number" min=1>
+               <button type="submit" style="margin-top: 1rem;" class="btn btn-primary" >Submit Bid</button>
+            </form>
+           </div>
+       </div>
+<br />
+{% endfor %}
+{% endblock content %}

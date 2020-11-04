@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Jobs_Listings{% endblock title %}
+{% block content %}
+    <nav class="navbar navbar-light bg-light">
+    #search through categories and locations
+  <li class="nav-item"><a href="{% url 'job_new' %}">+ New</a></li>
+
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+    {% for job in object_list %}
+    <div class="card">
+   <div class="card-header">
+     <span class="font-weight-bold">{{ job.title }}</span> &middot;
+       <span class="text-muted">by {{ job.author }} |
+           {{ job.date }}</span>
+</div>
+    <div class="card-body">
+{{ job.body }}
+</div>
+    <div class="card-footer text-center text-muted">
+        <a href="{% url 'job_edit' job.pk %}"><button>Edit</button></a> |
+        <a href="{% url 'job_delete' job.pk %}"><button>Delete</button></a>
+</div>
+    </div>
+<br />
+{% endfor %}
+{% endblock content %}

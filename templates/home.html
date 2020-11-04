@@ -3,11 +3,21 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
+
+Hi fundi {{ user.username }} welcome to  Fixit!
+    <h2>New jobs available</h2>
+    <p><a href="{% url 'job_list' %}">view Job MarketPlace</a></p>
+
+
 <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
+
+  <div class="card z-depth-2">
+            <div class="card-content">
+                <h5>Notice</h5>
+                <p class="custom-font-1">You must have a registered account and be logged in, in order to view and place bids within our marketplace.</p>
+            </div>
+        </div><a href="{% url 'login' %}">Log In</a> |
 <a href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
-{% endblock content %}
+ {% include 'footer.html' %} {% endblock content %}

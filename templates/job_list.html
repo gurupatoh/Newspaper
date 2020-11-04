@@ -1,21 +1,49 @@
 {% extends 'base.html' %}
 {% block title %}Jobs_Listings{% endblock title %}
 {% block content %}
+
+
+
+
+
+    <nav class="navbar navbar-light bg-light">
+    #search through categories and locations
+        <div></div>
+
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+       <div class="card">
+                <div class="card-content">
+                        <table class="table responsive-table">
+                                <thead>
+                                    <tr>
+
+                                        <th>Job_Title</th>
+                                        <th>client</th>
+                                        <th>Category</th>
+                                        <th>Added</th>
+                                        <th>View Details</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
     {% for job in object_list %}
-    <div class="card">
-   <div class="card-header">
-     <span class="font-weight-bold">{{ job.title }}</span> &middot;
-       <span class="text-muted">by {{ job.author }} |
-           {{ job.date }}</span>
-</div>
-    <div class="card-body">
-{{ job.body }}
-</div>
-    <div class="card-footer text-center text-muted">
-        <a href="{% url 'job_edit' job.pk %}">Edit</a> |
-        <a href="{% url 'job_delete' job.pk %}">Delete</a>
-</div>
-    </div>
-<br />
+        <td><span class="chip indigo white-text">{{ job.title }}</span></td>
+        <td>{{ job.client }}</td>
+        <td>{{ job.category }}</td>
+        <td>{{ job.date }}</td>
+
+        <td><a href="{% url 'job_detail' %}" style="margin-top: 1rem;" class="btn pink waves-effect waves-light">View Details</a></td>
+        </tr>
+<br/>
 {% endfor %}
-{% endblock content %}
+         </tbody>
+                            </table>
+{#        {% include 'footer.html' %}#}
+
+                {% endblock content %}
+

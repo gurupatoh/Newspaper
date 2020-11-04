@@ -22,6 +22,7 @@ urlpatterns = [
     path('users/', include('users.urls')),  # new
     path('users/', include('django.contrib.auth.urls')),  # new
     path('jobs/', include('jobs.urls')),  # new
+    path('bids/', include('bids.urls')),  # new
 
     path('', TemplateView.as_view(template_name='home.html'),
          name='home'),
